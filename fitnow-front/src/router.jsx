@@ -12,11 +12,10 @@ const router = createBrowserRouter([
     path: "/",
     element: <DefaultLayout />,
     children: [
-      
       {
-        path:'/',
-        element:<Navigate to="/Users"/>
-      }
+        path: "/Users",
+        element: <Users />,
+      },
     ],
   },
   
@@ -34,10 +33,7 @@ const router = createBrowserRouter([
       },
     ],
   },
-  {
-    path: "/Users",
-    element: <Users />,
-  },
+
   {
     path: "*",
     element: <NotfoundVwie />,

@@ -20,6 +20,9 @@ Route::post('login',[UserAuthController::class,'login']);
 
 
 Route::middleware('auth:sanctum')->group(function(){
+  Route::get('/user', function (Request $request){
+    return $request->user();
+  });
   Route::post('logout',[UserAuthController::class,'logout']);
   Route::get('sessions',[SessionController::class,'index'])->name('session.index');
   Route::post('sessions',[SessionController::class,'store'])->name('sessions.store');

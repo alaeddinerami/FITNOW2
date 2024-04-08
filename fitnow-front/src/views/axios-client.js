@@ -4,14 +4,14 @@ const axiosClient = axios.create({
     baseURL: `${import.meta.env.VITE_API_BASE_URL}/api`
 })
 
-axios.interceptors.request.use((config)=>{
+axiosClient.interceptors.request.use((config)=>{
 
-    const token = localStorage.get('ACCESS_TOKEN')
+    const token = localStorage.getItem('ACCESS_TOKEN')
     config.headers.Authorization = `Bearer ${token}`
     return config;
 })
 
-axios.interceptors.response.use((response)=> {
+axiosClient.interceptors.response.use((response)=> {
     return response;
 }),(error)=>{
     const {response} = error;

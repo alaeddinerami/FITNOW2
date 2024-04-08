@@ -20,9 +20,10 @@ class UserAuthController extends Controller
             'email' => $registerUserData['email'],
             'password' => Hash::make($registerUserData['password']),
         ]);
-        return response()->json([
-            'message' => 'User Created ',
-        ]);
+
+        $token = $user->createToken($user->name.'-AuthToken')->plainTextToken;
+        return response(compact('user','token'));
+
     }
 
     public function login(Request $request){
@@ -36,10 +37,11 @@ class UserAuthController extends Controller
                 'message' => 'Invalid Credentials'
             ],401);
         }
+        if($user->tokens()->exists()){
+            $user->tokens()->delete();
+        }
         $token = $user->createToken($user->name.'-AuthToken')->plainTextToken;
-        return response()->json([
-            'access_token' => $token,
-        ]);
+        return response(compact('user','token'));
     }
 
     public function logout(){

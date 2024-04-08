@@ -26,7 +26,7 @@ class SessionController extends Controller
 
         return response()->json([
             'sessions' => $sessions,
-        ], 200);
+        ]);
     }
 
 
@@ -54,7 +54,7 @@ class SessionController extends Controller
         if ($session) {
             return response()->json([
                 'message' => 'session created successfully'
-            ], 200);
+            ]);
         } else {
             return response()->json([
                 'message' => 'erorr'
@@ -97,11 +97,11 @@ class SessionController extends Controller
         if ($session) {
             return response()->json([
                 'message' => 'session updated successfully'
-            ], 200);
+            ]);//200
         } else {
             return response()->json([
                 'message' => 'erorr'
-            ], 500);
+            ]);//500
         }
 
     }

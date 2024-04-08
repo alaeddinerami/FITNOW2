@@ -1,7 +1,9 @@
 import React from 'react'
-
+import Navbar from '../components/navbar'
 export default function Users() {
   return (
-    <div>Users</div>
+    <div>
+       <Navbar />
+    </div>
   )
 }
